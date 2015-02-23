@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Assignment3</title>
+<canvas id="canvas" width="300" height="300" style="border:1px solid #CCC;"></canvas>
+
+</head>
+
+<body>
+<script>
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+
+function Point(x, y) {
+    this.x = x;
+    this.y = y;
+}
+
+var p1 = new Point(50, 50);
+var p2 = new Point(100, 100);
+
+function Line(startPoint, endPoint, width, color, alpha) {
+    this.startPoint = startPoint;
+    this.endPoint = endPoint;
+    this.width = width;
+    this.color = color;
+    this.alpha = alpha;
+    
+    this.draw = function() {
+        ctx.strokeStyle = color;
+        ctx.lineWidth = width;
+        ctx.globalAlpha = alpha;
+    
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.stroke();        
+    };
+}
+
+var line1 = new Line(p1, p2, 10, 'red', 1);
+line1.draw();
+
+</script>
+</body>
+</html>
